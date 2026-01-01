@@ -44,31 +44,6 @@ export const getUserProfileModel = async (user_id) => {
 };
 
 
-/* Update user profile (partial update) */
-// export const updateUserProfileModel = async (user_id, data) => {
-//   // Build dynamic set - only fields that exist in users table
-//   const allowed = ["first_name", "last_name", "email", "mobile", "vat", "zip", "city", "country", "address", "preferences"];
-//   const setParts = [];
-//   const params = [];
-
-//   allowed.forEach((k) => {
-//     if (typeof data[k] !== "undefined") {
-//       setParts.push(`${k} = ?`);
-//       params.push(data[k]);
-//     }
-//   });
-
-//   if (setParts.length === 0) return null;
-//   params.push(user_id);
-
-//   const sql = `UPDATE users SET ${setParts.join(", ")}, updated_at = NOW() WHERE id = ?`;
-//   console.log("SQL Query:", sql);
-//   console.log("Params:", params);
-
-//   const [result] = await db.execute(sql, params);
-//   return result.affectedRows > 0;
-// };
-
 export const updateUserProfileModel = async (user_id, data) => {
   // Allowed fields for update
   const allowed = [

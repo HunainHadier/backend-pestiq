@@ -2,17 +2,7 @@ import db from "../config/db.js";
 import bcrypt from "bcryptjs";
 
 
-// // ✅ Register normal user (OTP send karega)
-// export const registerNormalUser = async (data) => {
-//   const hashedPassword = await bcrypt.hash(data.password, 10);
-//   const [result] = await db.execute(
-//     `INSERT INTO users 
-//       (first_name, last_name, email, password, auth_type, is_company_owner, is_active, created_at, updated_at)
-//      VALUES (?, ?, ?, ?, 'normal', 1, 0, NOW(), NOW())`, // is_active = 0 until OTP verified
-//     [data.first_name, data.last_name, data.email, hashedPassword]
-//   );
-//   return result.insertId;
-// };
+
 export const registerNormalUser = async (req, res) => {
     try {
         const { 
@@ -180,50 +170,6 @@ export const getUserById = async (id) => {
   return rows[0];
 };
 
-// ✅ Create user via social login (Google/Facebook/Apple)
-// export const registerSocialUser = async (data) => {
-//   console.log('Starting social user registration with data:', data);
-  
-//   const {
-//     first_name,
-//     last_name,
-//     email,
-//     auth_type,
-//     google_id = null,
-//     google_avatar = null,
-//     facebook_id = null,
-//     facebook_avatar = null,
-//     apple_id = null,
-//     apple_avatar = null,
-//   } = data;
-
-//   try {
-//     console.log('Executing SQL insert...');
-//     const [result] = await db.execute(
-//       `INSERT INTO users 
-//         (first_name, last_name, email, auth_type, google_id, google_avatar, facebook_id, facebook_avatar, apple_id, apple_avatar, is_active, is_company_owner, created_at, updated_at)
-//        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 1, NOW(), NOW())`,
-//       [
-//         first_name,
-//         last_name,
-//         email,
-//         auth_type,
-//         google_id,
-//         google_avatar,
-//         facebook_id,
-//         facebook_avatar,
-//         apple_id,
-//         apple_avatar,
-//       ]
-//     );
-    
-//     console.log('User inserted successfully with ID:', result.insertId);
-//     return result.insertId;
-//   } catch (error) {
-//     console.error('Error in registerSocialUser:', error);
-//     throw error;
-//   }
-// };
 
 export const registerSocialUser = async (data) => {
   console.log('Starting social user registration with data:', data);
