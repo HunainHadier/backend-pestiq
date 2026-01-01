@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/pestiqplus/pestiqbackend/
+    - /bin/cp -R * $DEPLOYPATH
